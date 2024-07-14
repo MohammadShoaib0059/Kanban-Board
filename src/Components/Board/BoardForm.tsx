@@ -12,6 +12,7 @@ import {
   useMediaQuery,
 } from "../../Common/imports";
 import { BoardFormProps } from "../../Common/Common";
+import BoardImage from '../../assets/20945628.jpg';
 
 const BoardForm: React.FC<BoardFormProps> = ({ handleModalClose }) => {
   const { formik, handleBucketClose } = useBoardForm(handleModalClose);
@@ -31,7 +32,7 @@ const BoardForm: React.FC<BoardFormProps> = ({ handleModalClose }) => {
                 height="100%"
               >
                 <img
-                  src="../src/assets/20945628.jpg"
+                  src={BoardImage}
                   alt="Board"
                   style={{ width: "100%", height: "auto", borderRadius: "8px" }}
                 />

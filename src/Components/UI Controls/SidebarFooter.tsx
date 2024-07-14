@@ -8,7 +8,8 @@ import WorkIcon from '@mui/icons-material/Work';
 import PersonIcon from '@mui/icons-material/Person';
 import LogoutIcon from "@mui/icons-material/Logout";
 import {Controls} from '../../Common/imports';
-
+import UserImage from '../../assets/user.jpg';
+import AdminImage from '../../assets/admin.png';
 interface SidebarFooterProps extends React.HTMLAttributes<HTMLDivElement> {
   children?: React.ReactNode;
   collapsed?: boolean;
@@ -83,7 +84,7 @@ export const SidebarFooter: React.FC<SidebarFooterProps> = ({ children, collapse
   const context = useContext<SelectorContextType | undefined>(SelectorContext);
 
   if (!context) {
-    throw new Error('Board must be used within a SelectorContext.Provider');
+    throw new Error('Playground must be used within a SelectorContext.Provider');
   }
 
   const { credentials, role } = context;
@@ -125,11 +126,11 @@ export const SidebarFooter: React.FC<SidebarFooterProps> = ({ children, collapse
           <div style={{ marginTop: '10px', marginLeft: '30px' }}>
             <CustomTooltip title={tooltipContent} arrow>
              {role === 'admin' ? <img
-                src="../src/assets/admin.png"
+                src={AdminImage}
                 alt="User"
                 style={{ width: '60%', height: 'auto', borderRadius: '50%', cursor: 'pointer' }}
               /> :  <img
-              src="../src/assets/user.jpg"
+              src={UserImage}
               alt="User"
               style={{ width: '60%', height: 'auto', borderRadius: '50%', cursor: 'pointer' }}
             />

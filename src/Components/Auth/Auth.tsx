@@ -2,7 +2,7 @@ import React from 'react';
 import useAuthForm from '../../Hooks/useAuthForm';
 import { Box,Controls, Paper, TextField} from '../../Common/imports';
 import Notification from '../notifications/Notifications';
-
+import LoginImage from '../../assets/20944201.jpg';
 interface LoginComponentProps {
   isAdminView: boolean;
   toggleView: () => void;
@@ -25,7 +25,7 @@ const LoginComponent: React.FC<LoginComponentProps> = () => {
         {/* Illustration Side */}
         <Box sx={{ flex: '1 1 50%', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
         
-            <img src='../src/assets/20944201.jpg' width='100%'/>
+            <img src={LoginImage} width='100%'/>
         
         </Box>
 
