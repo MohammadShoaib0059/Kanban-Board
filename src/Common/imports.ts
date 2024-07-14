@@ -42,7 +42,7 @@ export { deleteboard } from "../Redux/Board/removeBoardSlice";
 export { fetchLookUp } from "../Redux/General/lookupSlice";
 export { CreateTask } from "../Redux/Task/createTaskSlice";
 export { UpdateTask } from "../Redux/Task/UpdatetaskSlice";
-export { default as CreateBoard } from "../Redux/Board/createBoardSlice";
+export { CreateBoard } from "../Redux/Board/createBoardSlice";
 export { setCredentials } from "../Redux/General/ComponentStateSlice";
 export {
   Loginkanban,
@@ -95,7 +95,7 @@ export * as Yup from "yup";
 //Hooks
 export { default as useDragAndDropTask } from "../Hooks/useDragAndDropTask";
 export { default as useBoardActions } from "../Hooks/useBoardActions";
-export { useBoardForm } from "../Hooks/useBoardForm";
+export { default as useBoardForm } from "../Hooks/useBoardForm";
 export { default as useFetchData } from "../Hooks/useFetchData";
 export { default as useSelectorActions } from "../Hooks/useSelectorActions";
 

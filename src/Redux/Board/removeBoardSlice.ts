@@ -2,6 +2,8 @@
 
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { setStatus } from '../General/ComponentStateSlice';
+import { addNotification } from '../notifications/notificationSlice';
 
 const initialState = {
   data: {},
@@ -9,13 +11,33 @@ const initialState = {
   error: null
 };
 
-export const deleteboard = createAsyncThunk('removebucket/deletebucket', 
-    async (id: string) => {
+export const deleteboard = createAsyncThunk('deleteboard/removeboard', 
+    async (id: string,{dispatch}) => {
     // debugger
-    const response = await axios.delete(`http://localhost:3000/board/${id}`);
-  console.log("response", response);
+    try {
+      dispatch(setStatus(true));
+      const response = await axios.delete(`http://localhost:3000/board/${id}`);
+      dispatch(addNotification({
+        id: Date.now(),
+        type: 'success',
+        message: 'Board removed successfully!'
+      }));
+      return response.data;
+    } catch (error:any) {
+      dispatch(addNotification({
+        id: Date.now(),
+        type: 'error',
+        message: error.response.data.message
+      }));
+    }finally{
+      setTimeout(()=>{
+        dispatch(setStatus(false));
+      },1000)
+     
+    }
+  
 
-  return response.data;
+
 });
 
 const removeboardSlice = createSlice({

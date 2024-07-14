@@ -10,7 +10,7 @@ export const DargandDropTask = createAsyncThunk(
     { id, bucketId }: UpdateTaskParams,
     { rejectWithValue,dispatch }
   ) => {
-    debugger
+    // debugger
     try {
       const response = await axios.patch(
         `http://localhost:3000/task/${id}/bucket`,

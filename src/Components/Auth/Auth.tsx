@@ -1,33 +1,32 @@
 import React from 'react';
 import useAuthForm from '../../Hooks/useAuthForm';
 import {AccountCircleIcon, AdminPanelSettingsIcon, Box,Controls, IconButton, Paper, TextField} from '../../Common/imports';
+import Notification from '../notifications/Notifications';
 
 interface LoginComponentProps {
   isAdminView: boolean;
   toggleView: () => void;
 }
 
-const LoginComponent: React.FC<LoginComponentProps> = ({ isAdminView, toggleView }) => {
+const LoginComponent: React.FC<LoginComponentProps> = ({ toggleView }) => {
   
-  const formik = useAuthForm(isAdminView);
+  const formik = useAuthForm();
 
   return (
     <Paper variant="outlined" sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}>
       <Box
         sx={{
           display: 'flex',
-          flexDirection: isAdminView ? 'row-reverse' : 'row',
+          flexDirection: 'row',
           alignItems: 'center',
-          height: '100%',
+          // height: '100%',
         }}
       >
         {/* Illustration Side */}
         <Box sx={{ flex: '1 1 50%', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-          {isAdminView ? (
-            <AdminPanelSettingsIcon sx={{ fontSize: '10rem', color: 'primary.main' }} />
-          ) : (
-            <AccountCircleIcon sx={{ fontSize: '10rem', color: 'primary.main' }} />
-          )}
+        
+            <img src='../src/assets/20944201.jpg' width='100%'/>
+        
         </Box>
 
         {/* Form Side */}
@@ -38,9 +37,12 @@ const LoginComponent: React.FC<LoginComponentProps> = ({ isAdminView, toggleView
           noValidate
           autoComplete="off"
         >
-          <Controls.Typography variant="h4">
-            {isAdminView ? 'Admin Login' : 'User Login'}
+          <Controls.Typography variant="h3">
+            Welcome to Kanban Board
           </Controls.Typography>
+          {/* <Controls.Typography variant="h5">
+            Add Credentials to Sign In
+          </Controls.Typography> */}
           <TextField
             margin="normal"
             required
@@ -72,16 +74,17 @@ const LoginComponent: React.FC<LoginComponentProps> = ({ isAdminView, toggleView
             helperText={formik.touched.password && formik.errors.password}
           />
           <Controls.Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }}>
-            {isAdminView ? 'Sign In (Admin)' : 'Sign In'}
+           Sign In
           </Controls.Button>
-          <Controls.Box sx={{ textAlign: 'center' }}>
+          {/* <Controls.Box sx={{ textAlign: 'center' }}>
             <IconButton onClick={toggleView} size="small">
-              {isAdminView ? <AccountCircleIcon /> : <AdminPanelSettingsIcon />}
+              <AdminPanelSettingsIcon />
             </IconButton>
             <Controls.Typography variant="body2" sx={{ mt: 1 }}>
-              {isAdminView ? 'Sign in as User' : 'Sign in as Admin'}
+            Sign in as Admin
             </Controls.Typography>
-          </Controls.Box>
+          </Controls.Box> */}
+          <Notification/>
         </Box>
       </Box>
     </Paper>

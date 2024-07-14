@@ -1,4 +1,4 @@
-// src/components/AdminLoginConfirmation.tsx
+
 import React from 'react';
 
 const AdminLoginConfirmation: React.FC = () => {

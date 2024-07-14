@@ -12,7 +12,7 @@ const TaskForm: React.FC<TaskFormProps> = ({ handleModalClose }) => {
     throw new Error('Board must be used within a SelectorContext.Provider');
   }
 
-  const { taskById, edit, name, role } = context;
+  const { taskById, edit, name, role } = context
   console.log("taskById", taskById);
 
   const [existingFiles, setExistingFiles] = React.useState<any[]>([]);
@@ -86,13 +86,13 @@ const TaskForm: React.FC<TaskFormProps> = ({ handleModalClose }) => {
         <LocalizationProvider dateAdapter={AdapterDayjs}>
           <DatePicker
             disabled={role === 'user'}
-            id="startDate"
-            name="startDate"
-            label="Start Date"
-            inputFormat="MM/DD/YYYY"
+            // id="startDate"
+            // name="startDate"
+            // label="Start Date"
+            // inputFormat="MM/DD/YYYY"
             value={formik.values.startDate ? dayjs(formik.values.startDate) : null}
             onChange={(date) => formik.setFieldValue('startDate', date?.format('MM/DD/YYYY'))}
-            renderInput={(params: any) => <TextField {...params} variant="outlined" />}
+            // renderInput={(params: any) => <TextField {...params} variant="outlined" />}
           />
         </LocalizationProvider>
       </FormControl>
@@ -101,13 +101,13 @@ const TaskForm: React.FC<TaskFormProps> = ({ handleModalClose }) => {
         <LocalizationProvider dateAdapter={AdapterDayjs}>
           <DatePicker
             disabled={role === 'user'}
-            id="dueDate"
-            name="dueDate"
-            label="Due Date"
-            inputFormat="MM/DD/YYYY"
+            // id="dueDate"
+            // name="dueDate"
+            // label="Due Date"
+            // inputFormat="MM/DD/YYYY"
             value={formik.values.dueDate ? dayjs(formik.values.dueDate) : null}
             onChange={(date) => formik.setFieldValue('dueDate', date?.format('MM/DD/YYYY'))}
-            renderInput={(params: any) => <TextField {...params} variant="outlined" />}
+            // renderInput={(params: any) => <TextField {...params} variant="outlined" />}
           />
         </LocalizationProvider>
       </FormControl>

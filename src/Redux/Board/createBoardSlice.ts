@@ -1,6 +1,8 @@
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import axios from "axios";
-import { BoardState } from "../../Common/Common";
+import { BoardState, CreateBoardParams } from "../../Common/Common";
+import { setStatus } from "../General/ComponentStateSlice";
+import { addNotification } from "../notifications/notificationSlice";
 
 const initialState: BoardState = {
   boards: [],
@@ -9,19 +11,37 @@ const initialState: BoardState = {
 };
 
 export const CreateBoard = createAsyncThunk(
-  "createBoard/CreateBoard",
-  async (Values: { name: string }, { rejectWithValue }) => {
+  "NewBoard/CreateBoard",
+  async (Values: CreateBoardParams,{dispatch}) => {
+    // debugger
+    dispatch(setStatus(true));
     try {
       const response = await axios.post("http://localhost:3000/board", Values);
+      console.log("Board response",response);
+      dispatch(addNotification({
+        id: Date.now(),
+        type: 'success',
+        message: 'Board created successfully!'
+      }));
       return response.data;
     } catch (error: any) {
-      return rejectWithValue(error.response.data);
+      console.log("Borad error",error.response.data.message);
+      dispatch(addNotification({
+        id: Date.now(),
+        type: 'error',
+        message: error.response.data.message
+      }));
+    }finally{
+      setTimeout(()=>{
+        dispatch(setStatus(false));
+      },1000)
+     
     }
   }
 );
 
 const createBoardSlice = createSlice({
-  name: "createBoard",
+  name: "NewBoard",
   initialState,
   reducers: {},
   extraReducers: (builder) => {
@@ -29,13 +49,13 @@ const createBoardSlice = createSlice({
       .addCase(CreateBoard.pending, (state) => {
         state.status = "loading";
       })
-      .addCase(CreateBoard.fulfilled, (state, action: PayloadAction<any>) => {
+      .addCase(CreateBoard.fulfilled, (state) => {
         state.status = "succeeded";
-        state.boards.push(action.payload);
+        // state.boards.push(action.payload);
       })
-      .addCase(CreateBoard.rejected, (state, action: PayloadAction<any>) => {
+      .addCase(CreateBoard.rejected, (state) => {
         state.status = "failed";
-        state.error = action.payload;
+        // state.error = action.payload;
       });
   },
 });

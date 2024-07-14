@@ -27,6 +27,7 @@ import {
   TooltipContainer,
   FixedFabContainer,
 } from "../../Common/imports";
+import Notification from "../notifications/Notifications";
 
 const Board: React.FC = () => {
   const context = useContext<SelectorContextType | undefined>(SelectorContext);
@@ -50,57 +51,41 @@ const Board: React.FC = () => {
   } = useBoardActions();
   const dispatch = useDispatch();
   const { dragAndDropTask } = useDragAndDropTask();
-  // console.log('status',status);
   const [loading, setLoading] = useState(false);
-  // const onDragStart = () => {
-  //   //  dispatch(setDragData(true));
-  // };
   useEffect(() => {
     if (status) {
       setLoading(true);
       dispatch(setDragData(true));
       setLoading(false);
-      // return 'Loading....'
     }
     // dispatch(setRefresh(true))
   }, [loading, dispatch, status]);
 
-  // if(status) {
-  //   return (
-  //     <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '50vh' }}>
-  //       <Typography color="error"><CircularProgress size={70} /></Typography>
-  //     </Box>
-  //   );
-  // }
   const onDragEnd = (result: any) => {
     console.log("result", result);
     const { destination, source, draggableId } = result;
     if (!destination) return;
-    // context.dispatch(setDragData(true));
-    // dispatch(setStatus('idle'));
-    // dispatch(setDragData(true));
     dragAndDropTask({
       id: draggableId,
       bucketId: destination.droppableId,
     });
   };
-  // useFetchData(status)
 
   return (
     <BoardContainer>
       {status && (
         <Box
           sx={{
-            position: "absolute",
+            position: 'absolute',
             top: 0,
             left: 0,
-            width: "100%",
-            height: "95%",
-            backgroundColor: "rgba(0, 0, 0, 1)",
-            zIndex: 1,
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
+            width: '100%',
+            height: '100%',
+            backgroundColor: 'rgba(0, 0, 0, 1)',
+            zIndex: 1000,
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
           }}
         >
           <Loader />
@@ -176,6 +161,7 @@ const Board: React.FC = () => {
         </Grid>
       </DragDropContext>
       <CustomModal />
+      <Notification />
       <FixedFabContainer>
         <Fab
           disabled={role === "user"}

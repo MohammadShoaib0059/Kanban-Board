@@ -4,15 +4,17 @@ import {
   useContext,
   setIsAddBucketVisible,
   setNewBucket,
-  CreateBucket
+  useDispatch,
+  CreateBucket,
 } from "../Common/imports";
-
+import { AppDispatch } from "../Redux/store";
 const useBoardActions = () => {
+  const dispatch = useDispatch<AppDispatch>();
   const context = useContext<SelectorContextType | undefined>(SelectorContext);
   if (!context) {
     throw new Error("Board must be used within a SelectorContext.Provider");
   }
-  const { newBucket, dispatch, boardId } = context;
+  const { newBucket, boardId } = context;
 
   const handleAddBucketClick = () => {
     if (newBucket.trim()) {

@@ -35,7 +35,7 @@ const CustomModal: React.FC<CustomModalProps> = () => {
   };
 
   const handleModalClose = () => {
-    debugger;
+    // debugger;
     setOpen(false);
     handleClose();
   };

@@ -5,7 +5,6 @@ import {
     BrowserRouter as Router,
     Navigate,
   } from "react-router-dom";
-import { AuthContext } from '../Context/AuthContext';
 import LoginPage from '../Page/Auth/LoginPage';
 import { Playground } from '../Components/SideMenu/Sidemenu';
 import { SelectorContext } from '../Context/SelectorContext';

@@ -2,24 +2,42 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { LoginsParams } from '../../Common/Common';
+import { setStatus } from '../General/ComponentStateSlice';
+import { addNotification } from '../notifications/notificationSlice';
 
 export const Loginkanban = createAsyncThunk(
   'auth/Loginkanban',
-  async (Values: LoginsParams) => {
+  async (values: LoginsParams,{dispatch}) => {
+    dispatch(setStatus(true));
     try {
-      const response = await axios.post('http://localhost:3000/auth/login', { ...Values });
+      const response = await axios.post('http://localhost:3000/auth/login', { ...values });
+      dispatch(addNotification({
+        id: Date.now(),
+        type: 'success',
+        message: 'You have signed-in successfully!'
+      }));
       return response.data;
-    } catch (error) {
-      throw error; 
+    } catch (error:any) {
+      dispatch(addNotification({
+        id: Date.now(),
+        type: 'error',
+        message: error.response.data.message
+      }));
+    }finally{
+      setTimeout(()=>{
+        dispatch(setStatus(false));
+      },1000)
+     
     }
   }
 );
 
 export const Logoutkanban = createAsyncThunk(
   'auth/Logoutkanban',
-  async (_, { getState, rejectWithValue }) => {
+  async (_, { getState, dispatch }) => {
     const state = getState() as any;
     const token = state.auth.token;
+    dispatch(setStatus(true));
     try {
       const response = await axios.post(
         'http://localhost:3000/auth/logout',
@@ -30,9 +48,23 @@ export const Logoutkanban = createAsyncThunk(
           },
         }
       );
+      dispatch(addNotification({
+        id: Date.now(),
+        type: 'success',
+        message: 'You have signed-out successfully!'
+      }));
       return response.data;
-    } catch (error) {
-      throw error; 
+    } catch (error:any) {
+      dispatch(addNotification({
+        id: Date.now(),
+        type: 'error',
+        message: error.response.data.message
+      })); 
+    }finally{
+      setTimeout(()=>{
+        dispatch(setStatus(false));
+      },1000)
+     
     }
   }
 );
@@ -68,7 +100,7 @@ const authSlice = createSlice({
         localStorage.setItem('token', action.payload.access_token);
         localStorage.setItem('role', action.payload.role);
       })
-      .addCase(Loginkanban.rejected, (state, action) => {
+      .addCase(Loginkanban.rejected, (state) => {
         state.status = 'failed';
         // state.error = action.payload;
       })
@@ -79,7 +111,7 @@ const authSlice = createSlice({
         localStorage.removeItem('token');
         localStorage.removeItem('role');
       })
-      .addCase(Logoutkanban.rejected, (state, action) => {
+      .addCase(Logoutkanban.rejected, (state) => {
         state.status = 'failed';
         // state.error = action.payload;
       });

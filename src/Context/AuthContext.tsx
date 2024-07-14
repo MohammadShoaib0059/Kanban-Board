@@ -1,6 +1,6 @@
 import React, { createContext, ReactNode } from 'react';
 import { AuthContextType, LoginsParams } from '../Common/Common';
-import { setCredentials,Loginkanban, Logoutkanban, setIsLoggedIn ,useDispatch, useMemo, useState} from '../Common/imports';
+import { setCredentials,Loginkanban, Logoutkanban, setIsLoggedIn ,useDispatch, useMemo} from '../Common/imports';
 
 export const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
@@ -10,31 +10,26 @@ interface AuthStateProps {
 
 const AuthState: React.FC<AuthStateProps> = ({ children }) => {
  const dispatch = useDispatch();
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-const token = localStorage.getItem("token");
+// const token = localStorage.getItem("token");
   const handleSubmit = (values: LoginsParams) => {
-    // dispatch(setCredentials(values));
     dispatch(setCredentials(values.username)); 
-    dispatch(Loginkanban(values));
+    dispatch(Loginkanban(values) as any);
     localStorage.setItem('credential',values.username)
-    // setIsAuthenticated(true);
   };
   const handlelogout = async () => {
     localStorage.removeItem('credential')
     localStorage.removeItem('token')
     localStorage.removeItem('role')
-    dispatch(Logoutkanban())
+    dispatch(Logoutkanban() as any)
     dispatch(setIsLoggedIn(false))
-    // setIsAuthenticated(false);
   }
 
   const memoedValue: AuthContextType = useMemo(
     () => ({
       handleSubmit,
       handlelogout,
-      isAuthenticated,
     }),
-    [handleSubmit,handlelogout, isAuthenticated]
+    [handleSubmit,handlelogout]
   );
 
   return <AuthContext.Provider value={memoedValue}>{children}</AuthContext.Provider>;

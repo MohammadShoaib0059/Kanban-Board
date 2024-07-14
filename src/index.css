@@ -36,3 +36,15 @@
 *::-webkit-scrollbar-corner {
   background: #f1f1f1;
 }
+/* src/styles/toastStyles.css */
+
+.custom-toast-container {
+  width: 350px; /* Adjust width */
+  height: auto; /* Adjust height */
+}
+
+.custom-toast {
+  min-height: 50px; /* Adjust minimum height for individual toasts */
+  display: flex;
+  align-items: center;
+}

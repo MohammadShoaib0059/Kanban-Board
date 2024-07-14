@@ -1,15 +1,18 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { UpdateTaskParams } from "../../Common/Common";
+import { setStatus } from "../General/ComponentStateSlice";
+import { addNotification } from "../notifications/notificationSlice";
 
 export const UpdateTask = createAsyncThunk(
   "updateTask/UpdateTask",
   async (
     { id, boardId, bucketId,formData }: UpdateTaskParams,
-    { rejectWithValue }
+    { dispatch,rejectWithValue }
   ) => {
-    debugger
+    // debugger
     try {
+      dispatch(setStatus(true));
       formData.append('bucketId', bucketId); 
       formData.append('boardId', boardId); 
       formData.append('id', id); 
@@ -20,9 +23,24 @@ export const UpdateTask = createAsyncThunk(
           // headers: { 'Authorization': `Bearer ${yourAuthToken}` }
         }
       );
+      dispatch(addNotification({
+        id: Date.now(),
+        type: 'success',
+        message: 'Task updated successfully!'
+      }));
       return response.data;
     } catch (error: any) {
+      dispatch(addNotification({
+        id: Date.now(),
+        type: 'error',
+        message: error.response.data.message
+      }));
       return rejectWithValue(error.response.data);
+    }finally{
+      setTimeout(()=>{
+        dispatch(setStatus(false));
+      },1000)
+     
     }
   }
 );

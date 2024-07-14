@@ -11,12 +11,9 @@ import {
   setNewBoard,
   setNewBucket,
   setOpen,
-  fetchtaskById, deletebucket, removeTask,deleteboard,useFetchData
+  fetchtaskById, deletebucket, removeTask,deleteboard
 } from "../Common/imports";
-// import { fetchtaskById, deletebucket, removeTask } from "../Common/imports";
-import { AppDispatch, RootState } from "../Redux/store";
-// import useFetchData from "./useFetchData";
-// import { deleteboard } from "../Redux/Board/removeBoardSlice";
+import { AppDispatch } from "../Redux/store";
 const useSelectorActions = () => {
   const dispatch = useDispatch<AppDispatch>();
 
@@ -26,33 +23,26 @@ const useSelectorActions = () => {
     dispatch(setEdit(false));
     handleOpen(id,name)
   };
-  // const handleOpenAttachment = () => {
-  //   dispatch(setAttchment(true));
-  //   // dispatch(setEdit(false));
-  //   handleOpen()
-  // };
-  const handleOpen = (id: any, name: any) => {
+  const handleOpen = (id: any, name?: any) => {
     dispatch(setNewBoard(false));
     dispatch(setOpen(true));
     dispatch(setId(id));
     dispatch(setName(name));
   };
   const handleNewPlan = () => {
-    // debugger
     dispatch(setAttchment(false));
     dispatch(setOpen(true));
     dispatch(setNewBoard(true));
   };
 
   const handleClose = () => {
-    // debugger
     dispatch(setOpen(false));
     dispatch(setDeleteTask(false));
     dispatch(setNewBoard(false));
     dispatch(setOpen(false));
     dispatch(setIsAddBucketVisible(false));
     dispatch(setNewBucket(""));
-    useFetchData();
+    // useFetchData();
   };
 
   const handleCardEdit = (id: number) => {
@@ -66,18 +56,18 @@ const useSelectorActions = () => {
   const handledeletebucket = (id: any) => {
     dispatch(deletebucket(id));
     dispatch(setDeleteTask(true));
-    useFetchData();
+    // useFetchData();
   };
 
   const handleDeleteCard = (id: any) => {
     dispatch(removeTask(id));
     dispatch(setDeleteTask(true));
-    useFetchData();
+    // useFetchData();
   };
   const handleBoardDelete = (id:any) => {
     dispatch(setDeleteBoard(true));
     dispatch(deleteboard(id));
-    useFetchData()
+    // useFetchData()
   };
 
   return {

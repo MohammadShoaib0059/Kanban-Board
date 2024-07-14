@@ -57,7 +57,6 @@ export interface LoginsParams {
 export interface AuthContextType {
   handleSubmit: (values: LoginsParams) => void;
   handlelogout: () => void;
-  isAuthenticated: boolean;
 }
   export interface ColumnProps {
     name: string;
@@ -107,6 +106,14 @@ export interface AuthContextType {
     formData: any;
     bucketId: any;
   }
+  
+  export interface CreateBucketParams {
+    name: string;
+    boardId: string;
+  }
+  export interface CreateBoardParams {
+    name: string;
+  }
   export interface TaskState {
     task: any;
     status: 'idle' | 'loading' | 'succeeded' | 'failed';
@@ -118,3 +125,12 @@ export interface AuthContextType {
     status: 'idle' | 'loading' | 'succeeded' | 'failed';
     error: string | null;
   }
+
+export type NotificationType = 'success' | 'error' | 'info' | 'warning';
+export interface Notification {
+  id: number;
+  type: NotificationType;
+  message: string;
+}
+
+export type NotificationState = Notification[];

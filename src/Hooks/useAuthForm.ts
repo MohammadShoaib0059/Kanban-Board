@@ -2,7 +2,7 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { useContext,AuthContext } from '../Common/imports';
 
-const useAuthForm = (isAdminView: boolean) => {
+const useAuthForm = () => {
   const context = useContext(AuthContext);
 
   if (!context) {
@@ -23,7 +23,7 @@ const useAuthForm = (isAdminView: boolean) => {
     },
     validationSchema: validationSchema,
     onSubmit: (values) => {
-      handleSubmit(values);
+      handleSubmit(values as any);
     },
   });
 

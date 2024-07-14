@@ -64,7 +64,7 @@ const SelectorState: React.FC<SelectorStateProps> = ({ children }) => {
   const role = useSelector((state: any) => state.auth?.role);
   const backDropOpen = useSelector((state: any) => state.backdrop.backDropOpen);
 
-  const memoedValue: SelectorContextType = useMemo(
+  const memoedValue: any = useMemo(
     () => ({
       role,
       update,
@@ -114,7 +114,10 @@ const SelectorState: React.FC<SelectorStateProps> = ({ children }) => {
       handledeletebucket,
       handleDeleteCard,
       board,
+      boardId,
       isAddBucketVisible,
+      handleBoardDelete,
+      isAddNewBucket,
       isLoggedIn,
       role,
       backDropOpen,
