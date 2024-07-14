@@ -61,10 +61,10 @@ export const Playground: React.FC = () => {
   const { board, handleBoardClick, handleNewPlan } = context;
   const [collapsed, setCollapsed] = useState(false);
   const [toggled, setToggled] = useState(false);
-  const [broken, setBroken] = useState(false);
-  const [rtl, setRtl] = useState(false);
-  const [hasImage, setHasImage] = useState(false);
-  const [theme, setTheme] = useState<Theme>('light');
+  // const [broken, setBroken] = useState(false);
+  const rtl = false;
+  const hasImage = false;
+  const theme = 'light';
   const BoardLocation = localStorage.getItem('boardId');
   const [selectedTeamId, setSelectedTeamId] = useState<string | null>(BoardLocation);
 
@@ -121,7 +121,7 @@ export const Playground: React.FC = () => {
         collapsed={collapsed}
         toggled={toggled}
         onBackdropClick={() => setToggled(false)}
-        onBreakPoint={setBroken}
+        // onBreakPoint={setBroken}
         image="https://user-images.githubusercontent.com/25878302/144499035-2911184c-76d3-4611-86e7-bc4e8ff84ff5.jpg"
         rtl={rtl}
         breakPoint="md"

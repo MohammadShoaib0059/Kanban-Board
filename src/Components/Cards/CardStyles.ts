@@ -9,7 +9,7 @@ export const CardContainer = styled(Paper)(({ theme }) => ({
   justifyContent: 'space-between',
 }));
 
-export const TaskTitle = styled('div')(({ theme }) => ({
+export const TaskTitle = styled('div')(() => ({
   fontWeight: 'bold',
 }));
 

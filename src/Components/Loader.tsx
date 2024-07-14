@@ -1,5 +1,5 @@
 import React from 'react';
-import { CircularProgress, colors } from '@mui/material';
+import { CircularProgress } from '@mui/material';
 import {Controls} from '../Common/imports';
 
 const Loader: React.FC = () => {

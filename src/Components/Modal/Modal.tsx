@@ -19,7 +19,7 @@ const CustomModal: React.FC<CustomModalProps> = () => {
     );
   }
 
-  const { handleClose, open, isNewBoard, isAttachment } = context;
+  const { handleClose, open, isNewBoard } = context;
   console.log("open", open);
 
   const style = {

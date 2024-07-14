@@ -1,6 +1,6 @@
 import React from 'react';
 import useAuthForm from '../../Hooks/useAuthForm';
-import {AccountCircleIcon, AdminPanelSettingsIcon, Box,Controls, IconButton, Paper, TextField} from '../../Common/imports';
+import { Box,Controls, Paper, TextField} from '../../Common/imports';
 import Notification from '../notifications/Notifications';
 
 interface LoginComponentProps {
@@ -8,7 +8,7 @@ interface LoginComponentProps {
   toggleView: () => void;
 }
 
-const LoginComponent: React.FC<LoginComponentProps> = ({ toggleView }) => {
+const LoginComponent: React.FC<LoginComponentProps> = () => {
   
   const formik = useAuthForm();
 

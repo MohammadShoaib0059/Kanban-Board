@@ -63,7 +63,7 @@ const Board: React.FC = () => {
 
   const onDragEnd = (result: any) => {
     console.log("result", result);
-    const { destination, source, draggableId } = result;
+    const { destination, draggableId } = result;
     if (!destination) return;
     dragAndDropTask({
       id: draggableId,

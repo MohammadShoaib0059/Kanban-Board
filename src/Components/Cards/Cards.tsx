@@ -84,7 +84,6 @@ const Cards: React.FC<CardsProps> = ({
                         | null
                         | undefined;
                     },
-                    index: any
                   ) => (
                     <Chip label={attachment.originalName} />
                   )

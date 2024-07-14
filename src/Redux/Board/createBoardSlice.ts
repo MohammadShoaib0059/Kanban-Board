@@ -1,4 +1,4 @@
-import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { BoardState, CreateBoardParams } from "../../Common/Common";
 import { setStatus } from "../General/ComponentStateSlice";

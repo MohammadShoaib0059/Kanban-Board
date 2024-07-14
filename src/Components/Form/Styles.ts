@@ -3,14 +3,14 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import FormControl from '@mui/material/FormControl';
 
-export const TaskFormContainer = styled(Box)(({ theme }) => ({
+export const TaskFormContainer = styled(Box)(() => ({
   display: 'grid',
   gridTemplateColumns: 'repeat(3, 1fr)',
   gap: '16px',
   padding: '16px',
 }));
 
-export const FormGroup = styled(FormControl)(({ theme }) => ({
+export const FormGroup = styled(FormControl)(() => ({
   display: 'flex',
   flexDirection: 'column',
 }));
