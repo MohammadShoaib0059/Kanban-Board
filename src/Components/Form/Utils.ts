@@ -61,7 +61,7 @@ export const useTaskForm = (handleModalClose: any) => {
               formData.append(`${key}[${index}]`, item);
             });
           } else {
-            formData.append(key, values[key]);
+            formData.append(key, values[key] as any);
           }
         }
       });
