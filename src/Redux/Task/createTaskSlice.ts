@@ -68,7 +68,7 @@ const CreateTaskSlice = createSlice({
         state.status = 'succeeded';
         state.task = action.payload;
       })
-      .addCase(CreateTask.rejected, (state, action) => {
+      .addCase(CreateTask.rejected, (state) => {
         state.status = 'failed';
       });
   },

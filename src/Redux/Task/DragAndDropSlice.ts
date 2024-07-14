@@ -1,14 +1,12 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { UpdateTaskParams } from "../../Common/Common";
-import { setDragData } from "../General/ComponentStateSlice";
-import { setBackDropOpen } from "../Backdrop/backdropSlice";
 
 export const DargandDropTask = createAsyncThunk(
   "dragTask/DargandDropTask",
   async (
     { id, bucketId }: UpdateTaskParams,
-    { rejectWithValue,dispatch }
+    { rejectWithValue }
   ) => {
     // debugger
     try {
@@ -19,10 +17,6 @@ export const DargandDropTask = createAsyncThunk(
           // headers: { 'Authorization': `Bearer ${yourAuthToken}` }
         }
       );
-      
-    //   dispatch(setDragData(false))
-    //   dispatch(setBackDropOpen(true))
-    //   dispatch(setBackDropOpen(false))
       return response.data;
     } catch (error: any) {
       return rejectWithValue(error.response.data);

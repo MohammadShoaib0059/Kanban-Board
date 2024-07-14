@@ -13,7 +13,6 @@ interface ButtonProps {
 
 const Button: React.FC<ButtonProps> = ({
   variant = 'contained',
-  color = 'primary',
   onClick,
   type = 'button',
   fullWidth = false,
@@ -23,7 +22,6 @@ const Button: React.FC<ButtonProps> = ({
   return (
     <MuiButton
       variant={variant}
-      color={color}
       onClick={onClick}
       type={type}
       fullWidth={fullWidth}

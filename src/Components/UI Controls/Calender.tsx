@@ -1,6 +1,9 @@
 import React from 'react';
 // import { IconProps } from './types';
 
+interface IconProps {
+  size?:number, 
+}
 export const Calendar: React.FC<IconProps> = ({ size = 18, ...rest }) => {
   return (
     <svg

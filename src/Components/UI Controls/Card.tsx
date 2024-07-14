@@ -8,7 +8,7 @@ interface CardProps {
   assignees: string[];
 }
 
-const Card: React.FC<CardProps> = ({ id, title, dueDate, assignees }) => {
+const Card: React.FC<CardProps> = ({  title, dueDate, assignees }) => {
   return (
     <MuiCard>
       <div>{title}</div>

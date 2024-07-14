@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import React, { useContext } from 'react';
-import { Tooltip, Typography, tooltipClasses, TooltipProps } from '@mui/material';
+import { Tooltip, tooltipClasses, TooltipProps } from '@mui/material';
 import { AuthContext } from '../../Context/AuthContext';
 import { SelectorContextType } from '../../Common/Common';
 import { SelectorContext } from '../../Context/SelectorContext';
@@ -14,16 +14,16 @@ interface SidebarFooterProps extends React.HTMLAttributes<HTMLDivElement> {
   collapsed?: boolean;
 }
 
-const StyledButton = styled.a`
-  padding: 5px 16px;
-  border-radius: 4px;
-  border: none;
-  cursor: pointer;
-  display: inline-block;
-  background-color: #fff;
-  color: #484848;
-  text-decoration: none;
-`;
+// const StyledButton = styled.a`
+//   padding: 5px 16px;
+//   border-radius: 4px;
+//   border: none;
+//   cursor: pointer;
+//   display: inline-block;
+//   background-color: #fff;
+//   color: #484848;
+//   text-decoration: none;
+// `;
 
 const StyledSidebarFooter = styled.div`
   width: 50%;

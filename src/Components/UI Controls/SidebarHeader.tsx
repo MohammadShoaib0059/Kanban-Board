@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import React from 'react';
-import { Typography } from '../UI Controls/Typography';
+// import { Typography } from '../UI Controls/Typography';
 import {Controls} from '../../Common/imports';
 
 interface SidebarHeaderProps extends React.HTMLAttributes<HTMLDivElement> {

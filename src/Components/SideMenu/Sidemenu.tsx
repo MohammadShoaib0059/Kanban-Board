@@ -11,7 +11,7 @@ import { SelectorContextType } from '../../Common/Common';
 import { SelectorContext } from '../../Context/SelectorContext';
 import {AddIcon,ChevronLeftIcon,ChevronRightIcon,Groups3Icon, Controls,Button,SidebarFooter,SidebarHeader,Board,DeleteIcon} from '../../Common/imports';
 
-type Theme = 'light' | 'dark';
+// type Theme = 'light' | 'dark';
 
 const themes = {
   light: {
