@@ -28,6 +28,7 @@ import {
   FixedFabContainer,
 } from "../../Common/imports";
 import Notification from "../notifications/Notifications";
+import './Style'
 
 const Board: React.FC = () => {
   const context = useContext<SelectorContextType | undefined>(SelectorContext);
@@ -76,7 +77,17 @@ const Board: React.FC = () => {
       {status && (
         <Box
           sx={{
-            position: 'absolute',
+            // position: 'absolute',
+            // top: 0,
+            // left: 0,
+            // width: '100%',
+            // height: '100%',
+            // backgroundColor: 'rgba(0, 0, 0, 1)',
+            // zIndex: 1000,
+            // display: 'flex',
+            // justifyContent: 'center',
+            // alignItems: 'center',
+            position: 'fixed',
             top: 0,
             left: 0,
             width: '100%',
@@ -86,6 +97,7 @@ const Board: React.FC = () => {
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
+            overflow: 'hidden',
           }}
         >
           <Loader />
@@ -110,9 +122,9 @@ const Board: React.FC = () => {
             </Grid>
           ))}
           <Grid item>
-            <AddBucketContainer>
+            <AddBucketContainer >
               {isAddBucketVisible && (
-                <TooltipContainer>
+                <TooltipContainer sx={{zIndex:1000}}>
                   <TextField
                     label="New Bucket"
                     variant="outlined"

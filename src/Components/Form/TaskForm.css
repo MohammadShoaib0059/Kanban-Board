@@ -28,7 +28,7 @@
   }
   
   /* Responsive design */
-  @media (max-width: 768px) {
+  /* @media (max-width: 768px) {
     .task-form {
       grid-template-columns: 1fr;
     }
@@ -36,5 +36,30 @@
     .form-group.full-width {
       grid-column: span 1;
     }
-  }
+  } */
+  @media (max-width: 768px) {
+    .task-form {
+      grid-template-columns: 1fr; /* Single column layout */
+      max-width: 500px; /* Center the form by limiting width */
+      margin: 0 auto; /* Center horizontally */
+    }
   
+    .form-group.full-width {
+      grid-column: span 2; /* Span one column on small screens */
+      width: 100%; /* Ensure full width */
+    }
+  }
+  @media (max-width: 480px) {
+    .task-form {
+      grid-template-columns: 1fr; /* Single column layout */
+      max-width: 300px; 
+      margin: 0 auto; 
+      overflow-y: auto; /* Enable vertical scrolling */
+      max-height: 80vh; /* Limit height to allow scrolling */
+    }
+  
+    .form-group.full-width {
+      grid-column: span 1; 
+      width: 100%;
+    }
+  }

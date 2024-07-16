@@ -41,17 +41,15 @@ const Cards: React.FC<CardsProps> = ({
 
   const { handleCardEdit, handleDeleteCard, role } = context;
   const formattedDueDate = dayjs(dueDate).format("MM/DD/YYYY");
-
   return (
     <CardContainer>
       <CardHeader>
         <EditNoteIcon onClick={() => handleCardEdit(id)} />
         <TaskTitle>{title}</TaskTitle>
-        {role === "user" ? (
-          <Button></Button>
-        ) : (
-          <DeleteIcon onClick={() => handleDeleteCard(id)} />
-        )}
+      {/* <DeleteIcon onClick={() => handleDeleteCard(id)} /> */}
+      <Button onClick={() => handleDeleteCard(id)} disabled={role === "user"} sx={{marginRight:"-20px", color:'#000'}}>
+    <DeleteIcon />
+    </Button>
       </CardHeader>
       <Divider />
       <TaskDetails>
@@ -100,7 +98,8 @@ const Cards: React.FC<CardsProps> = ({
                       | Iterable<ReactNode>
                       | ReactPortal
                       | null
-                      | undefined;
+                      | undefined,
+                      path:string
                   },
                   index: Key | null | undefined
                 ) => (
@@ -109,6 +108,7 @@ const Cards: React.FC<CardsProps> = ({
                     label={attachment.originalName}
                     variant="outlined"
                     style={{ width: "120px" }}
+                    onClick={() => window.open(attachment.path, '_blank')}
                   />
                 )
               )}

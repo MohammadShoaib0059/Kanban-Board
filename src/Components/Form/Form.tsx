@@ -233,7 +233,7 @@ const TaskForm: React.FC<TaskFormProps> = ({ handleModalClose }) => {
             <Typography variant="body1" sx={{ color: '#000' }}>
               {file.originalName || file.filename}
             </Typography>
-            <Button onClick={() => handleFileRemove(file._id)}>Remove</Button>
+            <Button onClick={() => handleFileRemove(file._id)} disabled={role === "user"}>Remove</Button>
           </Box>
         ))}
         {formik.values.attachment && Array.from(formik.values.attachment).map((file: File) => (

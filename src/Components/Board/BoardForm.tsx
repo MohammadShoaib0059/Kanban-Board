@@ -13,17 +13,20 @@ import {
 } from "../../Common/imports";
 import { BoardFormProps } from "../../Common/Common";
 import BoardImage from '../../assets/20945628.jpg';
+// import './BoardForm.css'; 
+import './Style'
 
 const BoardForm: React.FC<BoardFormProps> = ({ handleModalClose }) => {
   const { formik, handleBucketClose } = useBoardForm(handleModalClose);
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const istablet = useMediaQuery(theme.breakpoints.down("md"));
 
   return (
     <Paper style={{ padding: "16px", marginTop: "16px" }}>
       <form onSubmit={formik.handleSubmit}>
         <Grid container spacing={2}>
-          {!isMobile && (
+          {!isMobile && !istablet && (
             <Grid item xs={12} md={6}>
               <Box
                 display="flex"
@@ -40,8 +43,8 @@ const BoardForm: React.FC<BoardFormProps> = ({ handleModalClose }) => {
             </Grid>
           )}
           <Grid item xs={12} md={isMobile ? 12 : 6}>
-            <Typography variant="h5" gutterBottom sx={{ marginBottom: "30px" }}>
-              Create a New Board
+            <Typography variant="h5" gutterBottom sx={{ marginBottom: "15px" }}>
+              New Board
             </Typography>
             <TextField
               fullWidth

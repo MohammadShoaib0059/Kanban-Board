@@ -1,0 +1,41 @@
+.board-form {
+    padding: 16px;
+    margin-top: 16px;
+  }
+  
+  .board-image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+  
+  .form-group {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .create-button,
+  .cancel-button {
+    margin-top: 16px;
+  }
+  
+  @media (max-width: 768px) {
+    .board-form {
+      padding: 12px;
+    }
+  
+    .board-image {
+      max-width: 100%;
+    }
+  
+    .form-group {
+      width: 100%; 
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .board-form {
+      padding: 8px;
+    }
+  }
+  

@@ -1,48 +1,67 @@
 import React from 'react';
 import useAuthForm from '../../Hooks/useAuthForm';
-import { Box,Controls, Paper, TextField} from '../../Common/imports';
+import { Box, Controls, Paper, TextField } from '../../Common/imports';
 import Notification from '../notifications/Notifications';
 import LoginImage from '../../assets/20944201.jpg';
+import { AuthHeader } from '../UI Controls/AuthHeader';
+
 interface LoginComponentProps {
   isAdminView: boolean;
   toggleView: () => void;
 }
 
 const LoginComponent: React.FC<LoginComponentProps> = () => {
-  
   const formik = useAuthForm();
 
   return (
-    <Paper variant="outlined" sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}>
+    <Paper
+      variant="outlined"
+      sx={{
+        my: { xs: 3, md: 6 },
+        p: { xs: 2, md: 3 },
+        mt:{xs:8,md:10}
+      }}
+    >
       <Box
         sx={{
           display: 'flex',
-          flexDirection: 'row',
+          flexDirection: { xs: 'column', md: 'row' },
           alignItems: 'center',
-          // height: '100%',
+          justifyContent: 'center',
         }}
       >
         {/* Illustration Side */}
-        <Box sx={{ flex: '1 1 50%', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-        
-            <img src={LoginImage} width='100%'/>
-        
+        <Box
+          sx={{
+            flex: '1 1 50%',
+            display: { xs: 'none', md: 'flex' },
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}
+        >
+          <img src={LoginImage} alt="Login Illustration" width="100%" />
         </Box>
 
         {/* Form Side */}
         <Box
           component="form"
           onSubmit={formik.handleSubmit}
-          sx={{ flex: '1 1 50%', p: 3, display: 'flex', flexDirection: 'column', gap: 2 }}
+          sx={{
+            flex: '1 1 50%',
+            p: 3,
+            display: 'flex',
+            flexDirection: 'column',
+            gap: 2,
+            width: { xs: '100%', md: 'auto' },
+            marginTop:{xs:'10px',md:'50px'}
+          }}
           noValidate
           autoComplete="off"
         >
-          <Controls.Typography variant="h3">
-            Welcome to Kanban Board
-          </Controls.Typography>
-          {/* <Controls.Typography variant="h5">
-            Add Credentials to Sign In
+          {/* <Controls.Typography variant="h3" sx={{ textAlign: { xs: 'center', md: 'left' } }}>
+          Kanban Login
           </Controls.Typography> */}
+          <AuthHeader/>
           <TextField
             margin="normal"
             required
@@ -74,17 +93,9 @@ const LoginComponent: React.FC<LoginComponentProps> = () => {
             helperText={formik.touched.password && formik.errors.password}
           />
           <Controls.Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }}>
-           Sign In
+            Sign In
           </Controls.Button>
-          {/* <Controls.Box sx={{ textAlign: 'center' }}>
-            <IconButton onClick={toggleView} size="small">
-              <AdminPanelSettingsIcon />
-            </IconButton>
-            <Controls.Typography variant="body2" sx={{ mt: 1 }}>
-            Sign in as Admin
-            </Controls.Typography>
-          </Controls.Box> */}
-          <Notification/>
+          <Notification />
         </Box>
       </Box>
     </Paper>

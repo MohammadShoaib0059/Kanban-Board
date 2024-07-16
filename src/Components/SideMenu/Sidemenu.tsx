@@ -124,7 +124,8 @@ export const Playground: React.FC = () => {
         // onBreakPoint={setBroken}
         image="https://user-images.githubusercontent.com/25878302/144499035-2911184c-76d3-4611-86e7-bc4e8ff84ff5.jpg"
         rtl={rtl}
-        breakPoint="md"
+        // breakPoint="xs"
+        customBreakPoint="300px"
         backgroundColor={hexToRgba(themes[theme].sidebar.backgroundColor, hasImage ? 0.9 : 1)}
         rootStyles={{
           color: themes[theme].sidebar.color,
@@ -153,7 +154,7 @@ export const Playground: React.FC = () => {
                 fontWeight={600}
                 style={{ opacity: collapsed ? 0 : 0.7, letterSpacing: '0.5px' }}
               >
-                Teams
+                Boards
               </Controls.Typography>
             </div>
             <Menu menuItemStyles={menuItemStyles}>
@@ -172,7 +173,7 @@ export const Playground: React.FC = () => {
                       <Button sx={{ textTransform: 'none'}}>
                         {item.name}
                       </Button>
-                      <Button onClick={()=>handleBoardDelete(item._id)}>
+                      <Button onClick={()=>handleBoardDelete(item._id)} disabled={role === "user"}>
                         <DeleteIcon />
                       </Button>
                     </Controls.Box>

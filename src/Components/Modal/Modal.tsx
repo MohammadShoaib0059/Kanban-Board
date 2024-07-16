@@ -5,7 +5,6 @@ import {
   Modal,
   Box,
   CloseIcon,
-  setOpen,
 } from "../../Common/imports";
 import { SelectorContext } from "../../Context/SelectorContext";
 import { CustomModalProps } from "../../Common/Common";
@@ -20,23 +19,8 @@ const CustomModal: React.FC<CustomModalProps> = () => {
   }
 
   const { handleClose, open, isNewBoard } = context;
-  console.log("open", open);
-
-  const style = {
-    position: "absolute" as "absolute",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    width: 600,
-    bgcolor: "background.paper",
-    border: "2px solid #000",
-    boxShadow: 24,
-    p: 4,
-  };
 
   const handleModalClose = () => {
-    // debugger;
-    setOpen(false);
     handleClose();
   };
 
@@ -47,8 +31,23 @@ const CustomModal: React.FC<CustomModalProps> = () => {
         onClose={handleModalClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
+        style={{margin:"40px"}}
       >
-        <Box sx={style}>
+        <Box
+          className="modal-content"
+          sx={{
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            width: "90%", // Responsive width
+            maxWidth: 600, // Maximum width
+            bgcolor: "background.paper",
+            border: "2px solid #000",
+            boxShadow: 24,
+            p: 4,
+          }}
+        >
           <Box
             sx={{
               position: "absolute",

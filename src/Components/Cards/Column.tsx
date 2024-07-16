@@ -28,16 +28,29 @@ const Column: React.FC<ColumnProps> = ({ name, tasks, id }) => {
       <ColumnContainer>
         <Stack spacing={-2.5}>
           <Header>
-            <AddIcon onClick={() => handleNewCard(id, name)} />
+            <AddIcon onClick={() => handleNewCard(id, name)} sx={{color:'#000'}}/>
             <ColumnHeader>{name}</ColumnHeader>
-            {name === "Up Next" ||
+            {/* {name === "Up Next" ||
             name === "InProgress" ||
             name === "Completed" ||
             role === "user" ? (
               <Button></Button>
             ) : (
               <DeleteIcon onClick={() => handledeletebucket(id)} />
-            )}
+            )
+            } */}
+            <Button
+              onClick={() => handledeletebucket(id)}
+              disabled={
+                role === "user" ||
+                name === "Up Next" ||
+                name === "InProgress" ||
+                name === "Completed"
+              }
+              sx={{ marginRight: "-20px", color: "#000" }}
+            >
+              <DeleteIcon />
+            </Button>
           </Header>
         </Stack>
       </ColumnContainer>
