@@ -4,13 +4,14 @@ import axios from 'axios';
 import { LoginsParams } from '../../Common/Common';
 import { setStatus } from '../General/ComponentStateSlice';
 import { addNotification } from '../notifications/notificationSlice';
+import { Base_URL, Login, Logout } from '../../config';
 
 export const Loginkanban = createAsyncThunk(
   'auth/Loginkanban',
   async (values: LoginsParams,{dispatch}) => {
     dispatch(setStatus(true));
     try {
-      const response = await axios.post('http://localhost:3000/auth/login', { ...values });
+      const response = await axios.post(Base_URL + Login, { ...values });
       dispatch(addNotification({
         id: Date.now(),
         type: 'success',
@@ -40,7 +41,7 @@ export const Logoutkanban = createAsyncThunk(
     dispatch(setStatus(true));
     try {
       const response = await axios.post(
-        'http://localhost:3000/auth/logout',
+        Base_URL + Logout,
         {},
         {
           headers: {

@@ -2,6 +2,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { setStatus } from '../General/ComponentStateSlice';
 import { addNotification } from '../notifications/notificationSlice';
+import { Base_URL, RemoveTask } from '../../config';
 
 export const removeTask = createAsyncThunk(
   'removetask/removeTask',
@@ -9,7 +10,7 @@ export const removeTask = createAsyncThunk(
     // debugger
     try {
       dispatch(setStatus(true));
-      const response = await axios.delete(`http://localhost:3000/task/${id}`)
+      const response = await axios.delete(`${Base_URL}${RemoveTask}/${id}`)
       console.log(response.data);
       dispatch(addNotification({
         id: Date.now(),

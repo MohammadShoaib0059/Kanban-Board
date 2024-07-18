@@ -4,6 +4,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { setStatus } from '../General/ComponentStateSlice';
 import { addNotification } from '../notifications/notificationSlice';
+import { Base_URL, RemoveBoard } from '../../config';
 
 const initialState = {
   data: {},
@@ -16,7 +17,7 @@ export const deleteboard = createAsyncThunk('deleteboard/removeboard',
     // debugger
     try {
       dispatch(setStatus(true));
-      const response = await axios.delete(`http://localhost:3000/board/${id}`);
+      const response = await axios.delete(`${Base_URL}${RemoveBoard}/${id}`);
       dispatch(addNotification({
         id: Date.now(),
         type: 'success',

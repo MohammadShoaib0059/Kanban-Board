@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import { Base_URL, GetBucket } from "../../config";
 
 const initialState = {
   data: [],
@@ -11,7 +12,7 @@ export const fetchBucket = createAsyncThunk(
   "bucketData/fetchBucket",
   async (id: string) => {
     // debugger;
-    const response = await axios.get(`http://localhost:3000/bucket/${id}`);
+    const response = await axios.get(`${Base_URL}${GetBucket}/${id}`);
     console.log("response", response);
 
     return response.data;

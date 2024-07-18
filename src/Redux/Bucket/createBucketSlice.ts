@@ -3,6 +3,7 @@ import axios from 'axios';
 import { BucketState, CreateBucketParams } from '../../Common/Common';
 import { setStatus } from '../General/ComponentStateSlice';
 import { addNotification } from '../notifications/notificationSlice';
+import { Base_URL, Create_Bucket } from '../../config';
 
 const initialState: BucketState = {
   buckets: [],
@@ -15,7 +16,7 @@ export const CreateBucket = createAsyncThunk(
     // debugger
     try {
       dispatch(setStatus(true));
-      const response = await axios.post('http://localhost:3000/bucket', { name, boardId });
+      const response = await axios.post(Base_URL + Create_Bucket, { name, boardId });
       dispatch(addNotification({
         id: Date.now(),
         type: 'success',

@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { Base_URL, lookup } from '../../config';
 
 const initialState = {
   data: {},
@@ -7,7 +8,7 @@ const initialState = {
   error: null
 };
 export const fetchLookUp = createAsyncThunk('lookUp/fetchLookUp', async () => {
-  const response = await axios.get('http://localhost:3000/lookup');
+  const response = await axios.get(Base_URL + lookup);
   console.log("response",response);
   
   return response.data;

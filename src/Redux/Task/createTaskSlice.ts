@@ -3,6 +3,7 @@ import axios from 'axios';
 import { CreateTaskParams } from '../../Common/Common';
 import { setStatus } from '../General/ComponentStateSlice';
 import { addNotification } from '../notifications/notificationSlice';
+import { Base_URL, Create_Task } from '../../config';
 
 export const CreateTask = createAsyncThunk(
   'GetTask/createTask',
@@ -25,7 +26,7 @@ async ({ formData, bucketId }: CreateTaskParams, { dispatch }) => {
   try {
     dispatch(setStatus(true));
     formData.append('bucketId', bucketId); // Add bucketId to formData
-    const response = await axios.post('http://localhost:3000/task', formData, {
+    const response = await axios.post(Base_URL + Create_Task, formData, {
       headers: { 
         'Content-Type': 'multipart/form-data',
       }

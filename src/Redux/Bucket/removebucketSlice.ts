@@ -4,6 +4,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { setStatus } from '../General/ComponentStateSlice';
 import { addNotification } from '../notifications/notificationSlice';
+import { Base_URL, RemoveBucket } from '../../config';
 
 const initialState = {
   data: {},
@@ -16,7 +17,7 @@ export const deletebucket = createAsyncThunk('removebucket/deletebucket',
     // debugger
     try {
       dispatch(setStatus(true));
-      const response = await axios.delete(`http://localhost:3000/bucket/${id}`);
+      const response = await axios.delete(`${Base_URL}${RemoveBucket}/${id}`);
       console.log("response", response);
       dispatch(addNotification({
         id: Date.now(),

@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { UpdateTaskParams } from "../../Common/Common";
+import { Base_URL, DargAndDropTask } from "../../config";
 
 export const DargandDropTask = createAsyncThunk(
   "dragTask/DargandDropTask",
@@ -11,7 +12,7 @@ export const DargandDropTask = createAsyncThunk(
     // debugger
     try {
       const response = await axios.patch(
-        `http://localhost:3000/task/${id}/bucket`,
+        `${Base_URL}${DargAndDropTask}/${id}/bucket`,
         {bucketId },
         {
           // headers: { 'Authorization': `Bearer ${yourAuthToken}` }

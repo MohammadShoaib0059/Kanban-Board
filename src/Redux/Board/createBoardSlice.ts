@@ -3,6 +3,7 @@ import axios from "axios";
 import { BoardState, CreateBoardParams } from "../../Common/Common";
 import { setStatus } from "../General/ComponentStateSlice";
 import { addNotification } from "../notifications/notificationSlice";
+import { Base_URL, Create_Board } from "../../config";
 
 const initialState: BoardState = {
   boards: [],
@@ -16,7 +17,7 @@ export const CreateBoard = createAsyncThunk(
     // debugger
     dispatch(setStatus(true));
     try {
-      const response = await axios.post("http://localhost:3000/board", Values);
+      const response = await axios.post(Base_URL + Create_Board, Values);
       console.log("Board response",response);
       dispatch(addNotification({
         id: Date.now(),

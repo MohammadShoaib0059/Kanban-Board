@@ -2,6 +2,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { TaskState } from '../../Common/Common';
+import { Base_URL, GetTaskById } from '../../config';
 
 const initialState: TaskState = {
   task: null,
@@ -13,7 +14,7 @@ export const fetchtaskById = createAsyncThunk(
   'taskById/fetchtaskById',
   async (id: number, { rejectWithValue }) => {
     try {
-      const response = await axios.get(`http://localhost:3000/task/${id}`);
+      const response = await axios.get(`${Base_URL}${GetTaskById}/${id}`);
       console.log('response => fetchtaskById',response.data);
       
       return response.data;
