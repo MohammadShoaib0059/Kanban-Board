@@ -30,7 +30,7 @@ const SelectorState: React.FC<SelectorStateProps> = ({ children }) => {
   } = useSelectorActions();
   const isfetchbucket = useSelector((state: any) => state.board?.isfetchbucket);
   const board = useSelector((state: any) =>
-    dataFetched ? state.boardData?.data || [] : []
+    dataFetched ? state.boardData?.data : []
   );
 
   const fetchTask = useSelector((state: any) =>
@@ -113,7 +113,10 @@ const SelectorState: React.FC<SelectorStateProps> = ({ children }) => {
       handleCardEdit,
       handledeletebucket,
       handleDeleteCard,
-      board,
+      // board,
+      isfetchbucket,
+      dataFetched,
+      taskFetched,
       boardId,
       isAddBucketVisible,
       handleBoardDelete,
@@ -126,8 +129,8 @@ const SelectorState: React.FC<SelectorStateProps> = ({ children }) => {
       name,
       dragData,
       deleteTask,
-      fetchTask,
-      fetchBucket,
+      // fetchTask,
+      // fetchBucket,
       taskById,
       open,
       Id,

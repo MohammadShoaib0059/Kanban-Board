@@ -17,8 +17,8 @@ export const CreateBucket = createAsyncThunk(
     try {
       dispatch(setStatus(true));
       // const response = await axios.post(Base_URL + Create_Bucket, { name, boardId });
-      // const response = await axios.post(`http://localhost:3000/bucket`, { name, boardId });
-      const response = await axios.post(`https://kanban-board-e8jw.onrender.com/bucket`, { name, boardId });
+      const response = await axios.post(`http://localhost:3000/bucket`, { name, boardId });
+      // const response = await axios.post(`https://kanban-board-e8jw.onrender.com/bucket`, { name, boardId });
       dispatch(addNotification({
         id: Date.now(),
         type: 'success',

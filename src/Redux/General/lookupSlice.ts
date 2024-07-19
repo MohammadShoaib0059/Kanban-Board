@@ -9,8 +9,8 @@ const initialState = {
 };
 export const fetchLookUp = createAsyncThunk('lookUp/fetchLookUp', async () => {
   // const response = await axios.get(Base_URL + lookup);
-  // const response = await axios.get(`http://localhost:3000/lookup`);
-  const response = await axios.get(`https://kanban-board-e8jw.onrender.com/lookup`);
+  const response = await axios.get(`http://localhost:3000/lookup`);
+  // const response = await axios.get(`https://kanban-board-e8jw.onrender.com/lookup`);
   console.log("response",response);
   
   return response.data;

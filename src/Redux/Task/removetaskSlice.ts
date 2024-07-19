@@ -11,8 +11,8 @@ export const removeTask = createAsyncThunk(
     try {
       dispatch(setStatus(true));
       // const response = await axios.delete(`${Base_URL}${RemoveTask}/${id}`)
-      // const response = await axios.delete(`http://localhost:3000/task/${id}`)
-      const response = await axios.delete(`https://kanban-board-e8jw.onrender.com/task/${id}`)
+      const response = await axios.delete(`http://localhost:3000/task/${id}`)
+      // const response = await axios.delete(`https://kanban-board-e8jw.onrender.com/task/${id}`)
       console.log(response.data);
       dispatch(addNotification({
         id: Date.now(),

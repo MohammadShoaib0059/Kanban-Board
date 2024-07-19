@@ -13,8 +13,8 @@ export const fetchBucket = createAsyncThunk(
   async (id: string) => {
     // debugger;
     // const response = await axios.get(`${Base_URL}${GetBucket}/${id}`);
-    // const response = await axios.get(`http://localhost:3000/bucket/${id}`);
-    const response = await axios.get(`https://kanban-board-e8jw.onrender.com/bucket/${id}`);
+    const response = await axios.get(`http://localhost:3000/bucket/${id}`);
+    // const response = await axios.get(`https://kanban-board-e8jw.onrender.com/bucket/${id}`);
     console.log("response", response);
 
     return response.data;

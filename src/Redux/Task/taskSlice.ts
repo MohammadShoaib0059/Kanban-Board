@@ -12,8 +12,8 @@ const initialState = {
 
 export const fetchTasks = createAsyncThunk('tasks/fetchTasks', async () => {
   // const response = await axios.get(Base_URL + Get_All_Task);
-  // const response = await axios.get(`http://localhost:3000/task`);
-  const response = await axios.get(`https://kanban-board-e8jw.onrender.com/task`);
+  const response = await axios.get(`http://localhost:3000/task`);
+  // const response = await axios.get(`https://kanban-board-e8jw.onrender.com/task`);
   console.log("response", response);
 
   return response.data;

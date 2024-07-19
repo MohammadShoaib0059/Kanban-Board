@@ -13,8 +13,8 @@ const useDragAndDropTask = () => {
     try {
       dispatch(setStatus(true));
       const response = await axios.patch(
-        // `http://localhost:3000/task/${id}/bucket`,
-        `https://kanban-board-e8jw.onrender.com/task/${id}/bucket`,
+        `http://localhost:3000/task/${id}/bucket`,
+        // `https://kanban-board-e8jw.onrender.com/task/${id}/bucket`,
         // `${Base_URL}${DargAndDropTask}/${id}/bucket`,
         { bucketId },
         {
