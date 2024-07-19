@@ -8,7 +8,8 @@ const initialState = {
   error: null
 };
 export const fetchLookUp = createAsyncThunk('lookUp/fetchLookUp', async () => {
-  const response = await axios.get(Base_URL + lookup);
+  // const response = await axios.get(Base_URL + lookup);
+  const response = await axios.get(`http://localhost:3000/lookup`);
   console.log("response",response);
   
   return response.data;

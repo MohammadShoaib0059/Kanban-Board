@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import { Base_URL, GetBoard } from "../../config";
+// import { Base_URL, GetBoard } from "../../config";
 
 const initialState = {
   data: {},
@@ -9,7 +9,8 @@ const initialState = {
 };
 
 export const fetchBoard = createAsyncThunk("boardData/fetchBoard", async () => {
-  const response = await axios.get(Base_URL + GetBoard);
+  // const response = await axios.get(Base_URL + GetBoard); 
+  const response = await axios.get(`http://localhost:3000/board`); 
   console.log("response", response);
 
   return response.data;

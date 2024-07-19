@@ -11,7 +11,8 @@ export const Loginkanban = createAsyncThunk(
   async (values: LoginsParams,{dispatch}) => {
     dispatch(setStatus(true));
     try {
-      const response = await axios.post(Base_URL + Login, { ...values });
+      // const response = await axios.post(Base_URL + Login, { ...values });
+      const response = await axios.post(`http://localhost:3000/auth/login`, { ...values });
       dispatch(addNotification({
         id: Date.now(),
         type: 'success',
@@ -41,7 +42,8 @@ export const Logoutkanban = createAsyncThunk(
     dispatch(setStatus(true));
     try {
       const response = await axios.post(
-        Base_URL + Logout,
+        // Base_URL + Logout,
+        `http://localhost:3000/auth/logout`,
         {},
         {
           headers: {

@@ -2,7 +2,7 @@
 
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { Base_URL, Get_All_Task } from '../../config';
+// import { Base_URL, Get_All_Task } from '../../config';
 
 const initialState = {
   data: {},
@@ -11,7 +11,8 @@ const initialState = {
 };
 
 export const fetchTasks = createAsyncThunk('tasks/fetchTasks', async () => {
-  const response = await axios.get(Base_URL + Get_All_Task);
+  // const response = await axios.get(Base_URL + Get_All_Task);
+  const response = await axios.get(`http://localhost:3000/task`);
   console.log("response", response);
 
   return response.data;

@@ -3,7 +3,7 @@ import axios from "axios";
 import { UpdateTaskParams } from "../../Common/Common";
 import { setStatus } from "../General/ComponentStateSlice";
 import { addNotification } from "../notifications/notificationSlice";
-import { Base_URL, Update_Task } from "../../config";
+// import { Base_URL, Update_Task } from "../../config";
 
 export const UpdateTask = createAsyncThunk(
   "updateTask/UpdateTask",
@@ -18,7 +18,8 @@ export const UpdateTask = createAsyncThunk(
       formData.append('boardId', boardId); 
       formData.append('id', id); 
       const response = await axios.put(
-        `${Base_URL}${Update_Task}/${id}`,
+        // `${Base_URL}${Update_Task}/${id}`,
+        `http://localhost:3000/task/${id}`,
         formData ,
         {
           // headers: { 'Authorization': `Bearer ${yourAuthToken}` }
