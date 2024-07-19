@@ -18,7 +18,8 @@ export const CreateBoard = createAsyncThunk(
     dispatch(setStatus(true));
     try {
       // const response = await axios.post(Base_URL + Create_Board, Values);
-      const response = await axios.post(`http://localhost:3000/board`, Values);
+      // const response = await axios.post(`http://localhost:3000/board`, Values);
+      const response = await axios.post(`https://kanban-board-e8jw.onrender.com/board`, Values);
       console.log("Board response",response);
       dispatch(addNotification({
         id: Date.now(),

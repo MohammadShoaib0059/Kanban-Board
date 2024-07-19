@@ -10,7 +10,8 @@ const initialState = {
 
 export const fetchBoard = createAsyncThunk("boardData/fetchBoard", async () => {
   // const response = await axios.get(Base_URL + GetBoard); 
-  const response = await axios.get(`http://localhost:3000/board`); 
+  // const response = await axios.get(`http://localhost:3000/board`); 
+  const response = await axios.get(`https://kanban-board-e8jw.onrender.com/board`); 
   console.log("response", response);
 
   return response.data;

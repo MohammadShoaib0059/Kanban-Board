@@ -19,7 +19,8 @@ export const UpdateTask = createAsyncThunk(
       formData.append('id', id); 
       const response = await axios.put(
         // `${Base_URL}${Update_Task}/${id}`,
-        `http://localhost:3000/task/${id}`,
+        // `http://localhost:3000/task/${id}`,
+        `https://kanban-board-e8jw.onrender.com/task/${id}`,
         formData ,
         {
           // headers: { 'Authorization': `Bearer ${yourAuthToken}` }

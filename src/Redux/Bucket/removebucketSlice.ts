@@ -18,7 +18,7 @@ export const deletebucket = createAsyncThunk('removebucket/deletebucket',
     try {
       dispatch(setStatus(true));
       // const response = await axios.delete(`${Base_URL}${RemoveBucket}/${id}`);
-      const response = await axios.delete(`http://localhost:3000/bucket/${id}`);
+      const response = await axios.delete(`https://kanban-board-e8jw.onrender.com/bucket/${id}`);
       console.log("response", response);
       dispatch(addNotification({
         id: Date.now(),

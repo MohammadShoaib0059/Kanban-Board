@@ -15,7 +15,8 @@ export const fetchtaskById = createAsyncThunk(
   async (id: number, { rejectWithValue }) => {
     try {
       // const response = await axios.get(`${Base_URL}${GetTaskById}/${id}`);
-      const response = await axios.get(`http://localhost:3000/task/${id}`);
+      // const response = await axios.get(`http://localhost:3000/task/${id}`);
+      const response = await axios.get(`https://kanban-board-e8jw.onrender.com/task/${id}`);
       console.log('response => fetchtaskById',response.data);
       
       return response.data;

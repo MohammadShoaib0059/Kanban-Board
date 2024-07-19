@@ -18,7 +18,8 @@ export const deleteboard = createAsyncThunk('deleteboard/removeboard',
     try {
       dispatch(setStatus(true));
       // const response = await axios.delete(`${Base_URL}${RemoveBoard}/${id}`);
-      const response = await axios.delete(`http://localhost:3000/board/${id}`);
+      // const response = await axios.delete(`http://localhost:3000/board/${id}`);
+      const response = await axios.delete(`https://kanban-board-e8jw.onrender.com/board/${id}`);
       dispatch(addNotification({
         id: Date.now(),
         type: 'success',
